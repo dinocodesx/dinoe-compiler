@@ -2,6 +2,7 @@
 #[derive(Debug, PartialEq, Clone)]
 pub enum Token {
     Fn,            // 'fn' keyword
+    Return,        // 'return' keyword
     Ident(String), // e.g., 'add', 'main', 'x'
     IntType,       // 'int' keyword
     BoolType,      // 'bool' keyword
@@ -125,6 +126,7 @@ impl Lexer {
         // Match against keywords, otherwise it's a plain identifier
         match ident.as_str() {
             "fn" => Token::Fn,
+            "return" => Token::Return,
             "int" => Token::IntType,
             "bool" => Token::BoolType,
             "true" => Token::True,

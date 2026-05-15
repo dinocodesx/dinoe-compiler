@@ -115,14 +115,9 @@ impl Parser {
 
     /// Parses a single statement.
     fn parse_stmt(&mut self) -> Result<Stmt, String> {
-        // For simplicity, we assume an identifier starting a line is an expression
-        // unless it's a specific keyword like 'return'.
-        if let Token::Ident(s) = self.peek() {
-            if s == "return" {
-                self.advance(); // consume "return"
-                let expr = self.parse_expr()?;
-                return Ok(Stmt::Return(expr));
-            }
+        if self.match_token(&Token::Return) {
+            let expr = self.parse_expr()?;
+            return Ok(Stmt::Return(expr));
         }
 
         let expr = self.parse_expr()?;

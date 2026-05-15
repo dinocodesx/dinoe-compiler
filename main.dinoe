@@ -1,7 +1,7 @@
 fn add(a: int, b: int) -> int {
-    a + b
+    return a + b
 }
 
 fn main() -> int {
-    add(3, 5)
+    return add(3, 5) * 10
 }
